@@ -3,9 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
 from .forms import Custom_UserCreationForm
-
+from django.contrib.auth import authenticate,login,logout
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'TestAuthenticate/home.html')
 
 def register(request):
     #form=UserCreationForm
@@ -25,6 +25,16 @@ def register(request):
 
 def login(request):
         #form = 'Namra'
+        if request.method=="POST":
+            name=request.POST.get('username')
+            passw=request.POST.get('password')
+            user=authenticate (request, username=name,password=passw)
+            if user is not None:
+                login(request,user)
+                return redirect('home')
+            else:
+                messages.info(request, 'Username Or Password is incorrect')
+                
         context={}
         return render(request, 'TestAuthenticate/login.html', context)
 
