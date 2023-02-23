@@ -7,11 +7,32 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Register</h1>
     <form method="POST" action="">
         {% csrf_token %}
-        {{formHtml.as_p}}
-        <input type="submit" name="Create User" onclick="pressed()">
+        {% comment %} {{formHtml.username.label}}
+        {{formHtml.username}}
+        <br>
+        {{formHtml.email.label}}
+        {{formHtml.email}}
+        <br>
+        {{formHtml.password1.label}}
+        {{formHtml.password1}}
+        <br>
+        {{formHtml.password2.label}}
+        {{formHtml.password2}} {% endcomment %}
+        <table>
+            {{ formHtml.as_table }}
+             <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="Create User" onclick="pressed()">
+                </td>
+            </tr>
+         </table>     
     </form>
+    {{form.erros}}
+    <h3> Already have an account? <a href='{% url 'TestAuthenticate:loginpage' %}'> Login </a> </h3>
 </body>
 <script>
 
