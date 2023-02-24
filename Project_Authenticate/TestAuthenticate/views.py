@@ -4,6 +4,8 @@ from django.contrib.auth import login, logout
 from django.contrib import messages
 from .forms import Custom_UserCreationForm
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='TestAuthenticate:loginpage')
 def home(request):
     return render(request, 'TestAuthenticate/home.html')
 
@@ -23,7 +25,7 @@ def register(request):
     context={'formHtml':form}
     return render(request,'TestAuthenticate/register.html',context)
 
-def login(request):
+def login_function(request):
         #form = 'Namra'
         if request.method=="POST":
             name=request.POST.get('username')
@@ -40,4 +42,5 @@ def login(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('TestAuthenticate:login')
+    
+    return redirect('TestAuthenticate:loginpage')

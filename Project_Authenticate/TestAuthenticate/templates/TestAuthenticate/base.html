@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+
+
+        <nav>
+            <a href="{% url 'TestAuthenticate:homepage' %}">Home</a>
+            <a href="{% url 'TestAuthenticate:loginpage' %}">Login</a>
+
+
+            <span><a href="{% url 'TestAuthenticate:logout' %}"> Logout</a></span>
+            <br>
+           
+              <span> Hello, {{request.user}}</span>
+            
+
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+
+</html>

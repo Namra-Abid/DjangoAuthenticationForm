@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Register</h1>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {% comment %} {{formHtml.username.label}}
-        {{formHtml.username}}
-        <br>
-        {{formHtml.email.label}}
-        {{formHtml.email}}
-        <br>
-        {{formHtml.password1.label}}
-        {{formHtml.password1}}
-        <br>
-        {{formHtml.password2.label}}
-        {{formHtml.password2}} {% endcomment %}
-        <table>
-            {{ formHtml.as_table }}
-             <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="Create User" onclick="pressed()">
-                </td>
-            </tr>
-         </table>     
-    </form>
-    {{form.erros}}
-    <h3> Already have an account? <a href='{% url 'TestAuthenticate:loginpage' %}'> Login </a> </h3>
-</body>
+
+
+{% extends 'TestAuthenticate/base.html' %}
+
+{% block content %}
+  <h1>Register YourSelf Here !!</h1>
+  <form method="POST" action="">
+    {% csrf_token %}
+    {% comment %} {{formHtml.username.label}}
+    {{formHtml.username}}
+    <br>
+    {{formHtml.email.label}}
+    {{formHtml.email}}
+    <br>
+    {{formHtml.password1.label}}
+    {{formHtml.password1}}
+    <br>
+    {{formHtml.password2.label}}
+    {{formHtml.password2}} {% endcomment %}
+    <table>
+        {{ formHtml.as_table }}
+         <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="Create User" onclick="pressed()">
+            </td>
+        </tr>
+     </table>     
+</form>
+{{form.erros}}
+<h3> Already have an account? <a href='{% url 'TestAuthenticate:loginpage' %}'> Login </a> </h3>
+
 <script>
 
 function pressed(){
- console.log('Pressed')
- 
+console.log('Pressed')
+
 }
 
 </script>
-</html>
+
+{% endblock %}
